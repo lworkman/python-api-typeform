@@ -21,7 +21,7 @@ def createDictionaryFromTypeformResponse(typeformResponse,questionKeys):
         holder[response['token']] = questionAnswers
     return holder
 
-def createCSVFromDict(headers,rows):
+def createCSVFromDictionary(headers,rows):
     with open('./output/answers.csv','w') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames = headers)
         writer.writeheader()
@@ -49,4 +49,4 @@ for question in form['questions']:
 
 peoplesResponses = createDictionaryFromTypeformResponse(form['responses'],questionIDs)
 
-createCSVFromDict(['key','token']+questionIDs,peoplesResponses)
+createCSVFromDictionary(['key','token']+questionIDs,peoplesResponses)
